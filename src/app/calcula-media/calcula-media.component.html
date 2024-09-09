@@ -1,0 +1,48 @@
+<!-- calcula-media.component.html -->
+<div class="container">
+  <h2>Calcular Média Final</h2>
+  
+  <form (ngSubmit)="calcularMedia()">
+    <div class="form-group">
+      <label for="bim1">1º Bimestre:</label>
+      <input type="number" class="form-control" id="bim1" [(ngModel)]="bim1" name="bim1" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="bim2">2º Bimestre:</label>
+      <input type="number" class="form-control" id="bim2" [(ngModel)]="bim2" name="bim2" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="bim3">3º Bimestre:</label>
+      <input type="number" class="form-control" id="bim3" [(ngModel)]="bim3" name="bim3" required>
+    </div>
+
+    <div class="form-group">
+      <label for="bim4">4º Bimestre:</label>
+      <input type="number" class="form-control" id="bim4" [(ngModel)]="bim4" name="bim4" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calcular Média Parcial</button>
+  </form>
+
+  <div *ngIf="mediaParcial !== null" class="mt-4">
+    <h4>Média Parcial: {{ mediaParcial | number: '1.2-2' }}</h4>
+    <p>Situação: {{ situacao }}</p>
+    
+    <div *ngIf="situacao === 'Avaliação final'">
+      <form (ngSubmit)="calcularMediaFinal()">
+        <div class="form-group">
+          <label for="notaAvaliacaoFinal">Nota Avaliação Final:</label>
+          <input type="number" class="form-control" id="notaAvaliacaoFinal" [(ngModel)]="notaAvaliacaoFinal" name="notaAvaliacaoFinal" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calcular Média Final</button>
+      </form>
+    </div>
+
+    <div *ngIf="mediaFinal !== null">
+      <h4>Média Final: {{ mediaFinal | number: '1.2-2' }}</h4>
+      <p>Situação Final: {{ situacao }}</p>
+    </div>
+  </div>
+</div>
